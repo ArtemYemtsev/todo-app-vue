@@ -1,5 +1,6 @@
 <script setup>
-// script
+import { ref } from "vue";
+
 </script>
 
 <template>

@@ -1,0 +1,17 @@
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Manrope', sans-serif;
+  text-align: center;
+  color: inherit;
+  background: transparent;
+  border: none;
+  border-radius: 0.4em;
+  outline: none;
+  text-decoration: none;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+  transition: all 0.3s ease;
+}
