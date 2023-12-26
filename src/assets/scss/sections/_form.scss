@@ -1,0 +1,11 @@
+.form {
+  padding: 1.6rem 0;
+
+  &__block {
+    display: flex;
+  }
+
+  &__input {
+    padding: 0.5rem 1rem;
+  }
+}

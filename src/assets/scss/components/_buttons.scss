@@ -7,11 +7,15 @@
   color: inherit;
   background: transparent;
   border: none;
-  border-radius: 0.4em;
   outline: none;
   text-decoration: none;
   cursor: pointer;
   position: relative;
   z-index: 1;
   transition: all 0.3s ease;
+
+  &--primary {
+    background-color: $color-primary;
+    padding: 0 2rem;
+  }
 }

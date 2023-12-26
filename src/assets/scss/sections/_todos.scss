@@ -1,0 +1,17 @@
+.todos {
+  background: $color-tertiary;
+  padding: 2.4rem 0;
+  
+  &__list {
+
+    &__item {
+      border: 1px solid $color-secondary;
+      padding: 1rem;
+      margin-bottom: 1rem;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}

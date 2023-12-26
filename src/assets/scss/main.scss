@@ -6,7 +6,10 @@
 // @import "base/fonts";
 // @import "base/typography";
 
-// @import "components/buttons";
+@import "components/buttons";
+
+@import "sections/todos";
+@import "sections/form";
 
 @import "layout/header";
 @import "layout/footer";
