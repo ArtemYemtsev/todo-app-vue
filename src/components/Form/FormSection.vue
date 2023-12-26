@@ -1,25 +1,26 @@
 <script setup>
-
-import { ref } from "vue";
+import { computed } from "vue";
 import { v4 } from "uuid";
 
 const props = defineProps({
   todo: Object,
 });
 
-const emit = defineEmits(['update:todo']);
+const emit = defineEmits(['update:todos', 'update:todo']);
 
-let todo = ref({
-  uuid: v4(),
-  title: '',
-  body: '',
-});
+const inputTodo = computed({
+  get() {
+    return props.todo;
+  },
+  set(value) {
+    emit('update:todo', value);
+  }
+})
 
 const handlerClick = () => {
-  console.log(todo)
-  emit('update:todo', todo);
-  console.log('emit-go')
-  todo = {
+  inputTodo.value.uuid = v4();
+  emit('update:todos', inputTodo);
+  inputTodo.value = {
     uuid: v4(),
     title: '',
     body: '',
@@ -32,23 +33,19 @@ const handlerClick = () => {
     <div class="container">
       <form
         class="form__block"
-        @submit="handlerClick"
+        @submit.prevent="handlerClick"
       >
-        <p>{{ todo.title }}</p>
-        <p>{{ todo.body }}</p>
         <input
           type="text"
           placeholder="Enter todo title"
           class="form__input"
-          :value="todo.title"
-          @input="todo.title = $event.target.value"
+          v-model="inputTodo.title"
         >
         <input
           type="text"
           placeholder="Enter todo text"
           class="form__input"
-          :value="todo.body"
-          @input="todo.body = $event.target.value"
+          v-model="inputTodo.body"
         >
         <button
           type="button"
