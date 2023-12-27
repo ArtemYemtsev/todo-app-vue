@@ -4,6 +4,8 @@ const props = defineProps({
   todos: Array,
 });
 
+const emit = defineEmits(['update:todos-remove']);
+
 </script>
 
 <template>
@@ -15,8 +17,30 @@ const props = defineProps({
           :key="todo.uuid"
           class="todos__list__item"
         >
-          <h3>{{ todo.title }}</h3>
-          <p>{{ todo.body }}</p>
+          <div class="todos__body">
+            <h3>{{ todo.title }}</h3>
+            <p>{{ todo.body }}</p>
+          </div>
+          <div class="todos__controls">
+            <button
+              type="button"
+              :class="[
+                'btn btn__controls',
+                {'btn--progress': !todo.is_done},
+                {'btn--done': todo.is_done}
+              ]"
+              v-text="todo.is_done ? `Done` : `In progress...`"
+              @click.stop="todo.is_done = !todo.is_done"
+            >
+            </button>
+            <button
+              type="button"
+              class="btn btn__controls btn--remove"
+              @click.stop="$emit('update:todos-remove', todo.uuid)"
+            >
+              Delete
+            </button>
+          </div>
         </li>
       </ul>
     </div>

@@ -9,17 +9,23 @@ const todos = ref([
     uuid: '01',
     title: 'Title1',
     body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum, sed.',
+    is_done: false,
   },
   {
     uuid: '02',
     title: 'Title2',
     body: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident, aliquam.',
+    is_done: false,
   },
 ]);
 
 const todo = ref({})
 
 const addTodo = (todo) => { todos.value.push(todo); };
+
+const removeTodo = (id) => {
+  todos.value = todos.value.filter(item => item.uuid !== id);
+};
 </script>
 
 <template>
@@ -30,7 +36,10 @@ const addTodo = (todo) => { todos.value.push(todo); };
       @update:todo="(newValue) => (todo = newValue)"
       v-model:todo="todo"
     />
-    <ListSection :todos="todos" />
+    <ListSection
+      v-model:todos="todos"
+      @update:todos-remove="removeTodo"
+    />
   </div>
 </template>
 

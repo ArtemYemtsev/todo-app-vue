@@ -19,13 +19,14 @@ const inputTodo = computed({
 
 const handlerClick = () => {
   inputTodo.value.uuid = v4();
+  inputTodo.value.is_done = false;
   emit('update:todos', inputTodo);
   inputTodo.value = {
     uuid: v4(),
     title: '',
     body: '',
   };
-}
+};
 </script>
 
 <template>

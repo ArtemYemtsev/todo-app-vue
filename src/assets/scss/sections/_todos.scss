@@ -5,6 +5,9 @@
   &__list {
 
     &__item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       border: 1px solid $color-secondary;
       padding: 1rem;
       margin-bottom: 1rem;
@@ -12,6 +15,27 @@
       &:last-child {
         margin-bottom: 0;
       }
+    }
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+
+    p {
+      margin-top: 0.5rem;
+    }
+  }
+
+  &__controls {
+    display: flex;
+    justify-content: flex-end;
+    max-width: 12.2rem;
+    width: 100%;
+    margin: 0 1.2rem 0 auto;
+
+    .btn {
+      margin: 0.8rem;
     }
   }
 }
