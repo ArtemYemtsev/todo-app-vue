@@ -17,15 +17,22 @@ const inputTodo = computed({
   }
 })
 
+function checkForm() {
+  const required = inputTodo.value.title && inputTodo.value.body;
+  return (required !== '' && required.trim('')) ? true : false;
+}
+
 const handlerClick = () => {
-  inputTodo.value.uuid = v4();
-  inputTodo.value.is_done = false;
-  emit('update:todos', inputTodo);
-  inputTodo.value = {
-    uuid: v4(),
-    title: '',
-    body: '',
-  };
+  if(checkForm()) {
+    inputTodo.value.uuid = v4();
+    inputTodo.value.is_done = false;
+    emit('update:todos', inputTodo);
+    inputTodo.value = {
+      uuid: v4(),
+      title: '',
+      body: '',
+    };
+  }
 };
 </script>
 
@@ -39,15 +46,20 @@ const handlerClick = () => {
         <input
           type="text"
           placeholder="Enter todo title"
-          class="form__input"
+          :class="[
+            'form__input',
+            {error: false}
+          ]"
           v-model="inputTodo.title"
-        >
-        <input
-          type="text"
+        />
+        <textarea
           placeholder="Enter todo text"
-          class="form__input"
+          :class="[
+            'form__input form__input--textarea',
+            {error: false}
+          ]"
           v-model="inputTodo.body"
-        >
+        ></textarea>
         <button
           type="button"
           class="btn btn--primary"

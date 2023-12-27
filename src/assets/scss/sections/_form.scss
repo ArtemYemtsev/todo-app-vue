@@ -3,9 +3,22 @@
 
   &__block {
     display: flex;
+    flex-direction: column;
+    max-width: 50rem;
+    width: 100%;
   }
 
   &__input {
+    width: 100%;
     padding: 0.5rem 1rem;
+    margin-bottom: 0.5rem;
+
+    &--textarea {
+      min-height: 6.4rem;
+    }
+
+    &.error {
+      border-color: $color-error;
+    }
   }
 }

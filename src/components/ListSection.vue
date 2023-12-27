@@ -11,7 +11,10 @@ const emit = defineEmits(['update:todos-remove']);
 <template>
   <section class="todos">
     <div class="container">
-      <ul class="todos__list">
+      <ul
+        v-if="todos.length > 0"
+        class="todos__list"
+      >
         <li
           v-for="todo in todos"
           :key="todo.uuid"
@@ -43,6 +46,9 @@ const emit = defineEmits(['update:todos-remove']);
           </div>
         </li>
       </ul>
+      <div v-else>
+        <h3>No tasks right now!</h3>
+      </div>
     </div>
   </section>
 </template>

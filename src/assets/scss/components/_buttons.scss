@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: 'Manrope', sans-serif;
+  font-family: sans-serif;
   text-align: center;
   color: inherit;
   background: transparent;
@@ -15,8 +15,23 @@
   transition: all 0.3s ease;
 
   &--primary {
+    font-weight: 500;
+    height: 100%;
     background-color: $color-primary;
-    padding: 0 2rem;
+    padding: 0.5rem;
+
+    &:hover {
+      color: $color-white;
+      background-color: $color-secondary;
+    }
+  }
+
+  &--border {
+    border: 1px solid $color-text;
+
+    &:hover {
+      border-color: $color-white;
+    }
   }
 
   &__controls {

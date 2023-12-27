@@ -13,6 +13,7 @@ html {
 
 body {
   color: $color-text;
+  background: $color-tertiary;
 }
 
 .container {
@@ -20,4 +21,8 @@ body {
   width: 100%;
   padding: 0 4rem;
   margin: 0 auto;
+}
+
+.main {
+  position: relative;
 }
