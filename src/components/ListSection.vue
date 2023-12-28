@@ -1,16 +1,22 @@
 <script setup>
+import { useTodosStore } from "@/store/TodosStore.js";
+
+const todosStore = useTodosStore()
 
 const props = defineProps({
   todos: Array,
 });
 
-const emit = defineEmits(['update:todos-remove']);
+const removeTodo = (id) => {
+  todosStore.removeTodo(id);
+};
 
 </script>
 
 <template>
   <section class="todos">
     <div class="container">
+      <p>Todos count: {{ todosStore.totalCountTodos }}</p>
       <ul
         v-if="todos.length > 0"
         class="todos__list"
@@ -39,7 +45,7 @@ const emit = defineEmits(['update:todos-remove']);
             <button
               type="button"
               class="btn btn__controls btn--remove"
-              @click.stop="$emit('update:todos-remove', todo.uuid)"
+              @click.stop="removeTodo(todo.uuid)"
             >
               Delete
             </button>

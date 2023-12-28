@@ -7,37 +7,17 @@ import { ref } from "vue";
 
 const todosStore = useTodosStore()
 
-// const todos = ref([
-//   {
-//     uuid: '01',
-//     title: 'Title1',
-//     body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum, sed.',
-//     is_done: false,
-//   },
-//   {
-//     uuid: '02',
-//     title: 'Title2',
-//     body: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident, aliquam.',
-//     is_done: false,
-//   },
-// ]);
 const todo = ref({});
 const openForm = ref(false);
 
 const addTodo = (todo) => {
-  todos.value.push(todo);
+  todosStore.addTodo(todo);
   isOpenForm(false);
-};
-
-const removeTodo = (id) => {
-  todos.value = todos.value.filter(item => item.uuid !== id);
 };
 
 const isOpenForm = (isOpen) => {
   openForm.value = isOpen;
 };
-
-console.log(todosStore.todos);
 </script>
 
 <template>
@@ -47,8 +27,7 @@ console.log(todosStore.todos);
       @update:is-open-form="isOpenForm"
     />
     <ListSection
-      v-model:todos="todosStore.todos"
-      @update:todos-remove="removeTodo"
+      :todos="todosStore.todos"
     />
     <div
       :class="[
