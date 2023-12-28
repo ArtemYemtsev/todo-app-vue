@@ -2,22 +2,25 @@
 import HeaderSection from "./components/HeaderSection.vue";
 import FormSection from "./components/Form/FormSection.vue";
 import ListSection from "./components/ListSection.vue";
+import { useTodosStore } from "./store/TodosStore.js";
 import { ref } from "vue";
 
-const todos = ref([
-  {
-    uuid: '01',
-    title: 'Title1',
-    body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum, sed.',
-    is_done: false,
-  },
-  {
-    uuid: '02',
-    title: 'Title2',
-    body: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident, aliquam.',
-    is_done: false,
-  },
-]);
+const todosStore = useTodosStore()
+
+// const todos = ref([
+//   {
+//     uuid: '01',
+//     title: 'Title1',
+//     body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum, sed.',
+//     is_done: false,
+//   },
+//   {
+//     uuid: '02',
+//     title: 'Title2',
+//     body: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident, aliquam.',
+//     is_done: false,
+//   },
+// ]);
 const todo = ref({});
 const openForm = ref(false);
 
@@ -33,6 +36,8 @@ const removeTodo = (id) => {
 const isOpenForm = (isOpen) => {
   openForm.value = isOpen;
 };
+
+console.log(todosStore.todos);
 </script>
 
 <template>
@@ -42,7 +47,7 @@ const isOpenForm = (isOpen) => {
       @update:is-open-form="isOpenForm"
     />
     <ListSection
-      v-model:todos="todos"
+      v-model:todos="todosStore.todos"
       @update:todos-remove="removeTodo"
     />
     <div
