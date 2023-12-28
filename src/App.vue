@@ -26,9 +26,7 @@ const isOpenForm = (isOpen) => {
       :title="'My Vue Todo App'"
       @update:is-open-form="isOpenForm"
     />
-    <ListSection
-      :todos="todosStore.todos"
-    />
+    <ListSection />
     <div
       :class="[
         'popup',
