@@ -1,23 +1,22 @@
 <script setup>
-import { useTodosStore } from "@/store/TodosStore.js";
+const props = defineProps({
+  todos: {
+    type: Array,
+  },
+});
 
-const todosStore = useTodosStore()
-
-const removeTodo = (id) => {
-  todosStore.removeTodo(id);
-};
+const emit = defineEmits(['update:remove-todo'])
 </script>
 
 <template>
   <section class="todos">
     <div class="container">
-      <p>Todos count: {{ todosStore.totalCountTodos }}</p>
       <ul
-        v-if="todosStore.todos.length > 0"
+        v-if="todos.length > 0"
         class="todos__list"
       >
         <li
-          v-for="todo in todosStore.todos"
+          v-for="todo in todos"
           :key="todo.uuid"
           class="todos__list__item"
         >
@@ -40,7 +39,7 @@ const removeTodo = (id) => {
             <button
               type="button"
               class="btn btn__controls btn--remove"
-              @click="removeTodo(todo.uuid)"
+              @click="$emit('update:remove-todo', todo.uuid)"
             >
               Delete
             </button>
