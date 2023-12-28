@@ -15,6 +15,10 @@ const addTodo = (todo) => {
   isOpenForm(false);
 };
 
+const removeTodo = (id) => {
+  todosStore.removeTodo(id);
+};
+
 const isOpenForm = (isOpen) => {
   openForm.value = isOpen;
 };
@@ -26,7 +30,10 @@ const isOpenForm = (isOpen) => {
       :title="'My Vue Todo App'"
       @update:is-open-form="isOpenForm"
     />
-    <ListSection />
+    <ListSection
+      :todos="todosStore.todos"
+      @update:remove-todo="removeTodo"
+    />
     <div
       :class="[
         'popup',
