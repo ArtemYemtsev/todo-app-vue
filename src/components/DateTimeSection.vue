@@ -23,8 +23,8 @@ const getTime = () => {
   time.value = useTime();
 }
 
-// getDate()
-// getTime()
+getDate()
+getTime()
 
 setInterval(getDate, 1000);
 setInterval(getTime, 500);
