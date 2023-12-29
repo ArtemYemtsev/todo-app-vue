@@ -1,6 +1,7 @@
 <script setup>
 import HeaderSection from "./components/HeaderSection.vue";
 import FormSection from "./components/Form/FormSection.vue";
+import PopupBlock from "./components/Popup/PopupBlock.vue";
 import ListSection from "./components/ListSection.vue";
 import { useTodosStore } from "./store/TodosStore.js";
 import { ref } from "vue";
@@ -34,21 +35,13 @@ const isOpenForm = (isOpen) => {
       :todos="todosStore.todos"
       @update:remove-todo="removeTodo"
     />
-    <div
-      :class="[
-        'popup',
-        {active: openForm}
-      ]"
-      @click.stop="isOpenForm(false)"
-    >
-      <div class="popup__content" @click.stop>
-        <FormSection
+    <PopupBlock v-model:show="openForm">
+      <FormSection
           @update:todos="addTodo(todo)"
           @update:todo="(newValue) => (todo = newValue)"
           v-model:todo="todo"
         />
-      </div>
-    </div>
+    </PopupBlock>
   </div>
 </template>
 
