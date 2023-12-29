@@ -41,7 +41,7 @@ const handlerClick = () => {
     <div class="container">
       <form
         class="form__block"
-        @submit.prevent="handlerClick"
+        @submit.prevent.stop="handlerClick"
       >
         <input
           type="text"
