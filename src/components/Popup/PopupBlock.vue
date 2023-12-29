@@ -6,8 +6,10 @@ const props = defineProps({
   },
 })
 
+const emit = defineEmits(['update:show'])
+
 const closePopup = () => {
-  $emit('update:show', false)
+  emit('update:show', false)
 }
 </script>
 
