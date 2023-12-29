@@ -1,0 +1,14 @@
+.date-time {
+  color: $color-white;
+  background: $color-secondary;
+  padding: 0.2rem 0;
+  
+  &__inner {
+    display: flex;
+    justify-content: flex-end;
+
+    p {
+      margin-left: 1rem;
+    }
+  }
+}
