@@ -3,6 +3,7 @@ import HeaderSection from "./components/HeaderSection.vue";
 import FormSection from "./components/Form/FormSection.vue";
 import PopupBlock from "./components/Popup/PopupBlock.vue";
 import ListSection from "./components/ListSection.vue";
+import DateTimeSection from "./components/DateTimeSection.vue";
 import { useTodosStore } from "./store/TodosStore.js";
 import { ref } from "vue";
 
@@ -31,6 +32,7 @@ const isOpenForm = (isOpen) => {
       :title="'My Vue Todo App'"
       @update:is-open-form="isOpenForm"
     />
+    <DateTimeSection />
     <ListSection
       :todos="todosStore.todos"
       @update:remove-todo="removeTodo"
