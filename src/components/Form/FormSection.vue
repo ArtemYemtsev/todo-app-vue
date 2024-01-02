@@ -28,6 +28,7 @@ const handlerClick = () => {
   if(checkForm()) {
     inputTodo.value.uuid = v4();
     inputTodo.value.is_done = false;
+    inputTodo.value.is_editing = false;
     inputTodo.value.date = useDate();
     inputTodo.value.time = useTime();
     emit('update:todos', inputTodo);
@@ -35,6 +36,10 @@ const handlerClick = () => {
       uuid: '',
       title: '',
       body: '',
+      is_done: false,
+      is_editing: false,
+      date: '',
+      time: '',
     };
   }
 };
