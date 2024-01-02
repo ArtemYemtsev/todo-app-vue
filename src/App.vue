@@ -1,7 +1,6 @@
 <script setup>
 import HeaderSection from "./components/HeaderSection.vue";
 import FormSection from "./components/Form/FormSection.vue";
-// import EditFormSection from "./components/Form/EditFormSection.vue";
 import PopupBlock from "./components/Popup/PopupBlock.vue";
 import ListSection from "./components/ListSection.vue";
 import DateTimeSection from "./components/DateTimeSection.vue";
@@ -12,7 +11,6 @@ const todosStore = useTodosStore()
 
 const todo = ref({});
 const openForm = ref(false);
-const openEditForm = ref(false);
 
 const addTodo = (todo) => {
   todosStore.addTodo(todo);
@@ -25,11 +23,6 @@ const removeTodo = (id) => {
 
 const isOpenForm = (isOpen) => {
   openForm.value = isOpen;
-};
-
-const isOpenEditForm = (item) => {
-  todo.value = item;
-  openEditForm.value = true;
 };
 </script>
 

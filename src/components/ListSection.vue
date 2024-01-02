@@ -1,5 +1,4 @@
 <script setup>
-import { ref } from "vue"
 
 const props = defineProps({
   todos: {
@@ -9,16 +8,13 @@ const props = defineProps({
 
 const emit = defineEmits(['update:remove-todo', 'update:edit-form']);
 
-const openForm = ref(false);
-
 const editTodo = (id) => {
   props.todos.forEach( item => {
     if(item.uuid === id) {
       item.is_editing = !item.is_editing
     }
   })
-} 
-
+}
 </script>
 
 <template>
