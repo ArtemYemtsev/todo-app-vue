@@ -22,6 +22,12 @@ export const useTodosStore = defineStore('todosStore', () => {
     todos.value = todos.value.filter(item => item.uuid !== id);
   };
 
+  const editTodo = (todo) => {
+    todos.value.map(item => {
+      item.uuid === todo.uuid ? item = todo : false;
+    })
+  }
+
   watch(() => todos, (state) => {
     localStorage.setItem("todos", JSON.stringify(state));
   }, {deep: true});
@@ -30,6 +36,7 @@ export const useTodosStore = defineStore('todosStore', () => {
     todos, 
     totalCountTodos,
     addTodo,
-    removeTodo
+    removeTodo,
+    editTodo
   }
 })
