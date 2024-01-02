@@ -1,6 +1,8 @@
 <script setup>
 import { computed } from "vue";
 import { v4 } from "uuid";
+import useDate from "@/composables/useDate.js"
+import useTime from "@/composables/useTime.js"
 
 const props = defineProps({
   todo: Object,
@@ -26,9 +28,11 @@ const handlerClick = () => {
   if(checkForm()) {
     inputTodo.value.uuid = v4();
     inputTodo.value.is_done = false;
+    inputTodo.value.date = useDate();
+    inputTodo.value.time = useTime();
     emit('update:todos', inputTodo);
     inputTodo.value = {
-      uuid: v4(),
+      uuid: '',
       title: '',
       body: '',
     };
@@ -38,36 +42,34 @@ const handlerClick = () => {
 
 <template>
   <section class="form">
-    <div class="container">
-      <form
-        class="form__block"
-        @submit.prevent.stop="handlerClick"
+    <form
+      class="form__block"
+      @submit.prevent.stop="handlerClick"
+    >
+      <input
+        type="text"
+        placeholder="Enter todo title"
+        :class="[
+          'form__input',
+          {error: false}
+        ]"
+        v-model="inputTodo.title"
+      />
+      <textarea
+        placeholder="Enter todo text"
+        :class="[
+          'form__input form__input--textarea',
+          {error: false}
+        ]"
+        v-model="inputTodo.body"
+      ></textarea>
+      <button
+        type="button"
+        class="btn btn--primary"
+        @click="handlerClick"
       >
-        <input
-          type="text"
-          placeholder="Enter todo title"
-          :class="[
-            'form__input',
-            {error: false}
-          ]"
-          v-model="inputTodo.title"
-        />
-        <textarea
-          placeholder="Enter todo text"
-          :class="[
-            'form__input form__input--textarea',
-            {error: false}
-          ]"
-          v-model="inputTodo.body"
-        ></textarea>
-        <button
-          type="button"
-          class="btn btn--primary"
-          @click="handlerClick"
-        >
-          Add
-        </button>
-      </form>
-    </div>
+        Add
+      </button>
+    </form>
   </section>
 </template>

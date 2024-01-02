@@ -24,6 +24,14 @@ const emit = defineEmits(['update:remove-todo'])
             <h3>{{ todo.title }}</h3>
             <p>{{ todo.body }}</p>
           </div>
+          <div class="todos__date-time">
+            <p>
+              {{ `${todo.date.date}.${todo.date.month}.${todo.date.year}` }}
+            </p>
+            <p>
+              {{ `${todo.time.hours}:${todo.time.minutes}:${todo.time.seconds}` }}
+            </p>
+          </div>
           <div class="todos__controls">
             <button
               type="button"
